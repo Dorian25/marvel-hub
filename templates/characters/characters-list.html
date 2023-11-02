@@ -1,0 +1,65 @@
+{% extends "../index.html" %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mb-5 p-5">
+        <div class="col-4">
+            <img src="https://cdn.marvel.com/u/prod/marvel/i/mg/1/90/50fecabbdc324/standard_incredible.jpg" alt="" height="120" width="120">
+        </div>
+        <div class="col-8">
+            <h2>Series Name</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- SEARCH BAR -->
+    <section class="mb-3">
+        <h4 class="p-2">MARVEL CHARACTERS LIST</h4>
+        <form action="">
+            <input class="form-control form-control-lg" type="text" placeholder="SEARCH">
+        </form>
+    </section>
+    <!-- SEARCH RESULTS -->
+    <section>
+        <div class="row mb-5">
+            <div class="col-10">RESULTS</div>
+            <div class="col-2">SORT BY</div>
+        </div>
+        <div class="row row-cols-3 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3">
+            <div class="col">
+                <img src="https://cdn.marvel.com/u/prod/marvel/i/mg/9/70/56af9ab31766a/portrait_uncanny.jpg" alt="" width="100" height="160" loading="lazy">
+                <p>Titre issue</p>
+                <span>Creator</span>
+            </div>
+
+            <div class="col">
+                <img src="https://cdn.marvel.com/u/prod/marvel/i/mg/9/70/56af9ab31766a/portrait_uncanny.jpg" alt="" width="100" height="160" loading="lazy">
+                <p>Titre issue</p>
+                <span>Creator</span>
+            </div>
+
+            <div class="col">
+                <img src="https://cdn.marvel.com/u/prod/marvel/i/mg/9/70/56af9ab31766a/portrait_uncanny.jpg" alt="" width="100" height="160" loading="lazy">
+                <p>Titre issue</p>
+                <span>Creator</span>
+            </div>
+
+            <div class="col">
+                <img src="https://cdn.marvel.com/u/prod/marvel/i/mg/9/70/56af9ab31766a/portrait_uncanny.jpg" alt="" width="100" height="160" loading="lazy">
+                <p>Titre issue</p>
+                <span>Creator</span>
+            </div>
+
+            <div class="col">
+                <img src="https://cdn.marvel.com/u/prod/marvel/i/mg/9/70/56af9ab31766a/portrait_uncanny.jpg" alt="" width="100" height="160" loading="lazy">
+                <p>Titre issue</p>
+                <span>Creator</span>
+            </div>       
+        </div>
+    </section>
+    
+</div>
+
+{% endblock %}

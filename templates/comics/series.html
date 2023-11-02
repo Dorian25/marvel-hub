@@ -1,0 +1,52 @@
+{% extends "../index.html" %}
+
+{% block content %}
+<div class="container series-header">
+    <div class="row mb-5 p-5">
+        <div class="col-4">
+            <img class="img-thumbnail img-fluid" src="{{ series.url_logo}}" alt="" height="150" width="150">
+        </div>
+        <div class="col-8">
+            <h2>{{ series.cleanname }}</h2>
+            <div class="row p-2">
+                <div class="col-6">
+                    <h6>Status: {{ series.status }}</h5>
+                    <h6>Type: {{ series.type }}</h5>
+                </div>
+                <div class="col-6">
+                    <h6>Publisher: {{ series.publisher }}</h5>
+                    <h6>Genre: {{ series.genre }}</h5>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- SEARCH RESULTS -->
+    <section>
+        <div class="row mb-5">
+            <div class="col-10">SHOW {{ issues|length }} RESULTS</div>
+            <div class="col-2">SORT BY</div>
+        </div>
+        <div class="row row-cols-3 row-cols-sm-3 row-cols-md-4 row-cols-lg-5">
+            {% for issue in issues %}
+            <div class="col issue-card">
+                <div class="issue-card-image mb-3">
+                    <a href="../issue/{{ issue.issue_id}}/read/">
+                        <img class="img-fluid" src="{{ issue.url_cover }}" alt="" loading="lazy">
+                    </a>
+                </div>
+                <div class="issue-card-text">
+                    <h5>{{ issue.name }}</h5>
+                    <p>{{ issue.title }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    
+</div>
+
+{% endblock %}

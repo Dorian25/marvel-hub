@@ -1,0 +1,19 @@
+body {
+    font-family: "Marvel";
+}
+
+.nav-item:hover {
+    border-bottom: 1px solid #f0131e;
+}
+
+header {
+    background-color: black;
+}
+
+footer {
+    display: block;
+    font: 14px 'District Thin', helvetica, arial;
+    line-height: 60px;
+    text-align: center;
+    color: #666;
+}

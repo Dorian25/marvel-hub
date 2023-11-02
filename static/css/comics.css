@@ -1,0 +1,42 @@
+.series-header {
+    background-color: black;
+    color: white;
+}
+
+.series-header img, .series-card img{
+    max-width: 350px;
+}
+
+.series-card, .issue-card {
+    margin: 0 0 30px 0 !important;
+}
+
+.series-card img, .issue-card img {
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0.35rem 0.35rem 0.4rem rgba(0, 0, 0, 0.5));
+}
+
+.series-card:hover img, .issue-card:hover img{
+    top: -10px;
+}
+
+.series-card:hover, .issue-card:hover {
+    color: red;
+}
+
+.issue-card-text h5 {
+    font-weight: bold;
+}
+
+.issue-card-text p {
+    font-style: italic;
+    color: grey;
+}
+
+.series-header h2 {
+    font-weight: bold;
+}
