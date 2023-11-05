@@ -8,9 +8,6 @@ https://docs.djangoproject.com/en/4.2/howto/deployment/wsgi/
 """
 
 import os
-#from dotenv import load_dotenv
-#project_folder = os.path.expanduser('~/marvel-hub')  # adjust as appropriate
-#load_dotenv(os.path.join(project_folder, '.env'))
 
 from django.core.wsgi import get_wsgi_application
 
