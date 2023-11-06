@@ -2,17 +2,33 @@ body {
     font-family: "Marvel";
 }
 
-.nav-item:hover {
-    border-bottom: 1px solid #f0131e;
+.nav-link {
+    font-size: medium;
+    color: grey;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover {
+    border-bottom: 2px solid #f0131e;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-item.active > a {
+    border-bottom: 2px solid #f0131e;
+    font-weight: bold;
+    color: white;
 }
 
 header {
     background-color: black;
+    border-bottom: 1px solid #393939;
 }
 
 footer {
     display: block;
-    font: 14px 'District Thin', helvetica, arial;
     line-height: 60px;
     text-align: center;
     color: #666;

@@ -9,7 +9,7 @@ import re
 import binascii
 
 def home(request):
-    return render(request, "comics/base.html", {})
+    return render(request, "comics/home.html", {})
 
 def home_series(request):
     page = request.GET.get('page')
