@@ -42,7 +42,7 @@ def get_issue(request, pk):
 
     if url != "NA":
         pages = []
-        soup = BeautifulSoup(requests.get(url).text, "lxml")
+        soup = BeautifulSoup(requests.get(url).text, "html.parser")
 
         all_script = soup.find_all("script")
         all_script_txt = [script.text for script in all_script]
