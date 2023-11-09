@@ -1,52 +1,77 @@
 {% extends "../base.html" %}
 
 {% block content %}
-<div class="container series-header">
-    <div class="row mb-5 p-5">
-        <div class="col-4">
-            <img class="img-thumbnail img-fluid" src="{{ series.url_logo}}" alt="" height="150" width="150">
-        </div>
-        <div class="col-8">
-            <h2>{{ series.cleanname }}</h2>
-            <div class="row p-2">
-                <div class="col-6">
-                    <h6>Status: {{ series.status }}</h5>
-                    <h6>Type: {{ series.type }}</h5>
-                </div>
-                <div class="col-6">
-                    <h6>Publisher: {{ series.publisher }}</h5>
-                    <h6>Genre: {{ series.genre }}</h5>
-                </div>
-            </div>
-            
-        </div>
+<section>
+    <h4 class="p-2">FEATURED SERIES</h4>
+    <div class="row row-cols-3 row-cols-sm-3 row-cols-md-3 row-cols-lg-3">
+        {% for serie in list_featured %} 
+        {% endfor %}
     </div>
-</div>
+</section>
 
-<div class="container">
-    <!-- SEARCH RESULTS -->
-    <section>
+<section class="mb-3">
+    <h4 class="p-2">MARVEL SERIES LIST</h4>
+    <form action="">
+        <input class="form-control form-control-lg" type="text" placeholder="SEARCH">
+    </form>
+</section>
+
+<!-- SEARCH RESULTS -->
+<section>
+    <div class="container">
         <div class="row mb-5">
-            <div class="col-10">SHOW {{ issues|length }} RESULTS</div>
+            <div class="col-10">{{ all_series|length }} RESULTS</div>
             <div class="col-2">SORT BY</div>
         </div>
+        
         <div class="row row-cols-3 row-cols-sm-3 row-cols-md-4 row-cols-lg-5">
-            {% for issue in issues %}
-            <div class="col issue-card">
-                <div class="issue-card-image mb-3">
-                    <a href="../issue/{{ issue.issue_id}}/read/">
-                        <img class="img-fluid" src="{{ issue.url_cover }}" alt="" loading="lazy">
+          {% for serie in list_series %}  
+            <div class="col series-card">
+                <div class="series-card-image mb-3">
+                    <a href="./{{ serie.series_id }}">
+                        <img class="img-fluid" src="{{ serie.url_logo }}" alt="" loading="lazy">
                     </a>
                 </div>
-                <div class="issue-card-text">
-                    <h5>{{ issue.name }}</h5>
-                    <p>{{ issue.title }}</p>
+                <div class="series-card-text">
+                    <h5>{{ serie.cleanname }}</h5>
+                    <p>{{ serie.publicationdate }}</p>
                 </div>
             </div>
-            {% endfor %}
+          {% endfor %}    
         </div>
-    </section>
     
-</div>
-
-{% endblock %}
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center">
+            {% if list_series.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ list_series.previous_page_number}}" tabindex="-1">Previous</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            {% endif %}
+            
+            {% if list_series.number <= list_series.num_pages %}
+            <li class="page-item"><a class="page-link" href="?page={{ list_series.number}}">{{ list_series.number }}</a></li>
+            {% endif %}
+            {% if list_series.number|add:1 <= list_series.num_pages %}
+            <li class="page-item"><a class="page-link" href="?page={{ list_series.number|add:1 }}">{{ list_series.number|add:1 }}</a></li>
+            {% endif %}
+            {% if list_series.number|add:2 <= list_series.num_pages %}
+            <li class="page-item"><a class="page-link" href="?page={{ list_series.number|add:2 }}">{{ list_series.number|add:2 }}</a></li>
+            {% endif %}
+            {% if list_series.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ list_series.next_page_number}}">Next</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Next</a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+    </div>
+</section>
+{% endblock content %}

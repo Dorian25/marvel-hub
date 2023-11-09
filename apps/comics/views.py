@@ -17,7 +17,7 @@ def home_series(request):
     paginator = Paginator(all_series, 10) # Show 25 series per page
     list_series = paginator.get_page(page)
 
-    return render(request, 'comics/home.html', {"all_series": all_series,
+    return render(request, 'comics/series.html', {"all_series": all_series,
                                                 "list_series":list_series})
 
 def get_series(request, pk):
@@ -28,8 +28,8 @@ def get_series(request, pk):
     
     issues = Issue.objects.filter(series_id=pk)
 
-    return render(request, 'comics/series.html', {"series": series,
-                                                  "issues": issues})
+    return render(request, 'comics/details_series.html', {"series": series,
+                                                          "issues": issues})
 
 def get_issue(request, pk):
     try:
@@ -80,7 +80,7 @@ def get_issue(request, pk):
         pages = [beau(match) for match in matches]
         #pages = [imageUrl for imageUrl in matches]
                 
-        return render(request, 'comics/issue.html', {'issue': issue,
-                                                    'pages': pages})
+        return render(request, 'comics/get_issue.html', {'issue': issue,
+                                                          'pages': pages})
     else :
         return render(request, './404error.html')

@@ -1,5 +1,11 @@
 body {
     font-family: "Marvel";
+    width: 100vw;
+    height: 100vh
+}
+
+.nav-item {
+    margin-left: 1em;
 }
 
 .nav-link {
@@ -32,4 +38,33 @@ footer {
     line-height: 60px;
     text-align: center;
     color: #666;
+}
+
+.headlines-container {
+    position: relative;
+    display: inline-block;
+    background-color: #393939;
+    width: 100%;
+}
+  
+.headlines-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+    opacity: 0.5;
+    height: 350px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.headlines-text {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    background-color: transparent; 
+    color: #fff; 
+    padding: 10px 20px; 
+    font-size: 20px; 
+    text-align: center;
 }
