@@ -28,7 +28,7 @@ def get_series(request, pk):
     
     issues = Issue.objects.filter(series_id=pk)
 
-    return render(request, 'comics/details_series.html', {"series": series,
+    return render(request, 'comics/get_series.html', {"series": series,
                                                           "issues": issues})
 
 def get_issue(request, pk):
