@@ -18,5 +18,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.home, name="movies-home")
+    path('', views.home, name="movies-home"),
+    path('ajax_search', views.ajax_search, name="ajax-search"),
+    path('watch/<int:pk>', views.get_movie, name="get-movie"),
 ]

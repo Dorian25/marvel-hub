@@ -12,10 +12,11 @@ def home(request):
     return render(request, "comics/home.html", {})
 
 def home_series(request):
-    page = request.GET.get('page')
+    page = request.GET.get('page', 1)
     all_series = Series.objects.all().order_by('series_id')
-    paginator = Paginator(all_series, 10) # Show 25 series per page
+    paginator = Paginator(all_series, 20) # Show 20 series per page
     list_series = paginator.get_page(page)
+    list_series.adjusted_elided_pages = paginator.get_elided_page_range(page)
 
     return render(request, 'comics/series.html', {"all_series": all_series,
                                                 "list_series":list_series})

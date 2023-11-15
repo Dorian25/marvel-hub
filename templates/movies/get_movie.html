@@ -1,0 +1,25 @@
+{% extends "../base.html" %}
+
+{% block content %}
+<section>
+    <div class="container">
+    </div>
+</section>
+<section>
+
+</section>
+<section class="bg-dark">
+    <div class="container-fluid">
+        <iframe src="{{ movie.url_watch }}" width="100%" height="500" frameborder="0" allowfullscreen="true"></iframe>
+    </div>
+    <div class="container">
+        <h2 class="text-light">{{ movie.name }}</h2>
+        <div class="row">
+            <div class="col-1 p-1 text-light"><i class="fa-solid fa-star" style="color: #ffc800;"></i> ??/10</div>
+            <div class="col-1 p-1 text-secondary">{{ movie.release_date.year }}</div>
+            <div class="col-1 p-1 text-secondary">2h 33m</div>
+        </div>
+        <p class="text-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sapien dolor, ultricies ut tempor ut, egestas sit amet ex. Cras lacinia quam nisi, nec eleifend tellus placerat a. Quisque eu sagittis quam. Proin hendrerit lobortis blandit. Sed posuere consectetur risus nec venenatis. Duis nisi mauris, ultrices in sagittis quis, fringilla sit amet ex. Sed felis nisl, tristique non augue eu, malesuada cursus augue. Curabitur in rutrum nisl, id posuere enim. Phasellus in massa lacus. Donec bibendum finibus est. Donec faucibus, neque vestibulum ultricies interdum, dolor odio ultricies ipsum, vitae fermentum nibh lectus eu arcu. Sed bibendum nulla eget scelerisque feugiat. Fusce sed luctus mauris.</p>     
+    </div>
+</section>
+{% endblock content %}

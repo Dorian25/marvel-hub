@@ -68,3 +68,16 @@ footer {
     font-size: 20px; 
     text-align: center;
 }
+
+h1, h2, h3, h4 {
+    font-weight: bold;
+}
+
+.search-results {
+    text-decoration: none;
+    width: 100%;
+}
+
+.search-results:hover {
+    color:#f0131e;
+}

@@ -10,10 +10,12 @@
 </section>
 
 <section class="mb-3">
-    <h4 class="p-2">MARVEL SERIES LIST</h4>
-    <form action="">
-        <input class="form-control form-control-lg" type="text" placeholder="SEARCH">
-    </form>
+    <div class="container">
+      <h4 class="p-2">MARVEL SERIES LIST</h4>
+      <form action="">
+          <input class="form-control form-control-lg" type="text" placeholder="SEARCH">
+      </form>
+    </div>
 </section>
 
 <!-- SEARCH RESULTS -->
@@ -44,26 +46,29 @@
           <ul class="pagination justify-content-center">
             {% if list_series.has_previous %}
             <li class="page-item">
-              <a class="page-link" href="?page={{ list_series.previous_page_number}}" tabindex="-1">Previous</a>
+              <a class="page-link" href="{% url 'series-home' %}?page={{ list_series.previous_page_number }}" tabindex="-1">Previous</a>
             </li>
             {% else %}
             <li class="page-item disabled">
               <a class="page-link" href="#" tabindex="-1">Previous</a>
             </li>
             {% endif %}
+  
+            {% for page_number in list_series.adjusted_elided_pages %}
+              {% if page_number == list_series.paginator.ELLIPSIS %}
+              <li class="page-item">
+                <a class="page-link" href="">{{ page_number }}</a>
+              </li> 
+              {% else %}
+              <li {% if page_number == list_series.number %}class="page-item active" aria-current="page" {% else %}class="page-item"{% endif %}>
+                <a class="page-link" href="{% url 'series-home' %}?page={{ page_number }}">{{ page_number }}</a>
+              </li>  
+              {% endif %}
+            {% endfor %}
             
-            {% if list_series.number <= list_series.num_pages %}
-            <li class="page-item"><a class="page-link" href="?page={{ list_series.number}}">{{ list_series.number }}</a></li>
-            {% endif %}
-            {% if list_series.number|add:1 <= list_series.num_pages %}
-            <li class="page-item"><a class="page-link" href="?page={{ list_series.number|add:1 }}">{{ list_series.number|add:1 }}</a></li>
-            {% endif %}
-            {% if list_series.number|add:2 <= list_series.num_pages %}
-            <li class="page-item"><a class="page-link" href="?page={{ list_series.number|add:2 }}">{{ list_series.number|add:2 }}</a></li>
-            {% endif %}
             {% if list_series.has_next %}
             <li class="page-item">
-              <a class="page-link" href="?page={{ list_series.next_page_number}}">Next</a>
+              <a class="page-link" href="{% url 'series-home' %}?page={{ list_series.next_page_number }}">Next</a>
             </li>
             {% else %}
             <li class="page-item disabled">
