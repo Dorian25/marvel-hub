@@ -44,8 +44,10 @@ def get_issue(request, pk):
         pages = []
         try :
             soup = BeautifulSoup(requests.get(url).text, "html.parser")
+            print(soup)
 
             valid_script = soup.find(lambda tag:tag.name=="script" and "lstImages.push" in tag.text)
+            print(valid_script)
             chapter_images_regex = r"lstImages\.push\([\"'](.*)[\"']\)"
             matches = re.findall(chapter_images_regex, valid_script.text)
             print(len(matches))
