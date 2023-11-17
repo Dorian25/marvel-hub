@@ -45,24 +45,15 @@ def get_issue(request, pk):
         pages = []
         soup = BeautifulSoup(requests.get(url).text, "html.parser")
 
-        all_script = soup.find_all("script")
-        all_script_txt = [script.text for script in all_script]
-        valid_script = ""
-        for script_txt in all_script_txt:
-            if "lstImages.push" in script_txt:
-                valid_script = script_txt
-                break
-        
+        valid_script = soup.find(lambda tag:tag.name=="script" and "lstImages.push" in tag.text)
         chapter_images_regex = r"lstImages\.push\([\"'](.*)[\"']\)"
+        matches = re.findall(chapter_images_regex, valid_script.text)
 
-        matches = re.findall(chapter_images_regex, valid_script)
-        
         def beau(url):
             # url is crypted by a function in Scripts/rguard.min.js?v=1.2.9
             # https://github.com/Xonshiz/comic-dl/issues/299
             # https://github.com/Xonshiz/comic-dl/pull/344/files
-            url = url.replace("_x236", "d")
-            url = url.replace("_x945", "g")
+            url = url.replace("_x236", "d").replace("_x945", "g")
 
             if url.startswith("https"):
                 return url

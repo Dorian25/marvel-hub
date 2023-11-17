@@ -40,3 +40,7 @@
 .series-header h2 {
     font-weight: bold;
 }
+
+.carousel > .carousel-inner > .carousel-item > img {
+    height: 100vh;
+}
