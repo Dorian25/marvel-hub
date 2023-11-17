@@ -74,7 +74,8 @@ def get_issue(request, pk):
                     
             return render(request, 'comics/get_issue.html', {'issue': issue,
                                                             'pages': pages})
-        except:
+        except Exception as e:
+            print(e)
             return render(request, './404error.html')
     else :
         return render(request, './404error.html')
