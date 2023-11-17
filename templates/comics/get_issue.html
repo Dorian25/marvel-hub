@@ -2,24 +2,24 @@
 
 {% block content %}
 <div class="section">
-    <div class="row p-4">
-        <span>
-            <i class="fa-solid fa-arrow-left"></i>
-            <a class="col-4" href="#"> BACK TO SERIES</a>
-        </span>
-        <div class="col-8"></div>
-    </div>
 </div>
 
 <div class="section bg-dark">
-    <div class="container bg-dark">
-        <div id="carouselExampleIndicators" class="carousel slide">
+    <div id="comic-reader" class="container bg-dark">
+        <div id="top-menu-reader" class="row p-4">
+            <span>
+                <i class="fa-solid fa-arrow-left"></i>
+                <a class="col-4" href="#"> BACK TO SERIES</a>
+            </span>
+            <div class="col-8"></div>
+        </div>
+        <div id="carousel-reader" class="carousel slide">
             <div class="carousel-indicators">
                 {% for page_url in pages %}
                     {% if forloop.counter == 1 %}
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Page 1"></button>
+                    <button type="button" data-bs-target="#carousel-reader" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Page 1"></button>
                     {% else %}
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{forloop.counter0}}" aria-label="Page {{forloop.counter}}"></button>
+                    <button type="button" data-bs-target="#carousel-reader" data-bs-slide-to="{{forloop.counter0}}" aria-label="Page {{forloop.counter}}"></button>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -27,20 +27,20 @@
               {% for page_url in pages %}
                 {% if forloop.first %}
                 <div class="carousel-item active">
-                    <img src="{{page_url}}" class="d-block" alt="Page {{forloop.counter}}">
+                    <img src="{{page_url}}" class="center-block" alt="Page {{forloop.counter}}">
                 </div>
                 {% else %}
                 <div class="carousel-item">
-                    <img src="{{page_url}}" class="d-block" alt="Page {{forloop.counter}}">
+                    <img src="{{page_url}}" class="center-block" alt="Page {{forloop.counter}}">
                 </div>
                 {% endif %}
               {% endfor %}
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-reader" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel-reader" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>

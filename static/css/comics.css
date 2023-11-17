@@ -44,3 +44,29 @@
 .carousel > .carousel-inner > .carousel-item > img {
     height: 100vh;
 }
+
+#comic-reader {
+    position: relative;
+}
+
+#top-menu-reader {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(10px);
+}
+
+#top-menu-reader:hover {
+    display: block;
+}
+
+#top-menu-reader a {
+    text-decoration: none;
+    color: white;
+}
+
+#top-menu-reader {
+    z-index: 10;
+}

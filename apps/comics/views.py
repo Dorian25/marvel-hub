@@ -29,8 +29,7 @@ def get_series(request, pk):
     
     issues = Issue.objects.filter(series_id=pk)
 
-    return render(request, 'comics/get_series.html', {"series": series,
-                                                          "issues": issues})
+    return render(request, 'comics/get_series.html', {"series": series, "issues": issues})
 
 def get_issue(request, pk):
     try:
@@ -43,36 +42,39 @@ def get_issue(request, pk):
 
     if url != "NA":
         pages = []
-        soup = BeautifulSoup(requests.get(url).text, "html.parser")
+        try :
+            soup = BeautifulSoup(requests.get(url).text, "html.parser")
 
-        valid_script = soup.find(lambda tag:tag.name=="script" and "lstImages.push" in tag.text)
-        chapter_images_regex = r"lstImages\.push\([\"'](.*)[\"']\)"
-        matches = re.findall(chapter_images_regex, valid_script.text)
+            valid_script = soup.find(lambda tag:tag.name=="script" and "lstImages.push" in tag.text)
+            chapter_images_regex = r"lstImages\.push\([\"'](.*)[\"']\)"
+            matches = re.findall(chapter_images_regex, valid_script.text)
+            print(len(matches))
 
-        def beau(url):
-            # url is crypted by a function in Scripts/rguard.min.js?v=1.2.9
-            # https://github.com/Xonshiz/comic-dl/issues/299
-            # https://github.com/Xonshiz/comic-dl/pull/344/files
-            url = url.replace("_x236", "d").replace("_x945", "g")
+            def beau(url):
+                # url is crypted by a function in Scripts/rguard.min.js?v=1.2.9
+                # https://github.com/Xonshiz/comic-dl/issues/299
+                # https://github.com/Xonshiz/comic-dl/pull/344/files
+                url = url.replace("_x236", "d").replace("_x945", "g")
 
-            if url.startswith("https"):
-                return url
+                if url.startswith("https"):
+                    return url
 
-            url, sep, rest = url.partition("?")
-            containsS0 = "=s0" in url
-            url = url[:-3 if containsS0 else -6]
-            url = url[4:22] + url[25:]
-            url = url[0:-6] + url[-2:]
-            url = binascii.a2b_base64(url).decode()
-            url = url[0:13] + url[17:]
-    
-            url = url[0:-2] + ("=s0" if containsS0 else "=s1600")
-            return "https://2.bp.blogspot.com/" + url + sep + rest
+                url, sep, rest = url.partition("?")
+                containsS0 = "=s0" in url
+                url = url[:-3 if containsS0 else -6]
+                url = url[4:22] + url[25:]
+                url = url[0:-6] + url[-2:]
+                url = binascii.a2b_base64(url).decode()
+                url = url[0:13] + url[17:]
+        
+                url = url[0:-2] + ("=s0" if containsS0 else "=s1600")
+                return "https://2.bp.blogspot.com/" + url + sep + rest
 
-        pages = [beau(match) for match in matches]
-        #pages = [imageUrl for imageUrl in matches]
-                
-        return render(request, 'comics/get_issue.html', {'issue': issue,
-                                                          'pages': pages})
+            #pages = [beau(match) for match in matches]
+                    
+            return render(request, 'comics/get_issue.html', {'issue': issue,
+                                                            'pages': pages})
+        except:
+            return render(request, './404error.html')
     else :
         return render(request, './404error.html')
