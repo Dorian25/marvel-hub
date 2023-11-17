@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 import requests
 import re
 import binascii
+import cloudscraper
 
 def home(request):
     return render(request, "comics/home.html", {})
@@ -43,8 +44,8 @@ def get_issue(request, pk):
     if url != "NA":
         pages = []
         try :
-            soup = BeautifulSoup(requests.get("view-source:"+url).text, "html.parser")
-            print(soup)
+            scraper = cloudscraper.create_scraper()
+            soup = BeautifulSoup(scraper.get(url).text, "html.parser")
 
             valid_script = soup.find(lambda tag:tag.name=="script" and "lstImages.push" in tag.text)
             print(valid_script)
