@@ -43,7 +43,7 @@ def get_issue(request, pk):
     if url != "NA":
         pages = []
         try :
-            soup = BeautifulSoup(requests.get(url).text, "html.parser")
+            soup = BeautifulSoup(requests.get("view-source:"+url).text, "html.parser")
             print(soup)
 
             valid_script = soup.find(lambda tag:tag.name=="script" and "lstImages.push" in tag.text)
