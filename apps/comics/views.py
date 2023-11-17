@@ -48,10 +48,8 @@ def get_issue(request, pk):
             soup = BeautifulSoup(scraper.get(url).text, "html.parser")
 
             valid_script = soup.find(lambda tag:tag.name=="script" and "lstImages.push" in tag.text)
-            print(valid_script)
             chapter_images_regex = r"lstImages\.push\([\"'](.*)[\"']\)"
             matches = re.findall(chapter_images_regex, valid_script.text)
-            print(len(matches))
 
             def beau(url):
                 # url is crypted by a function in Scripts/rguard.min.js?v=1.2.9
@@ -73,7 +71,7 @@ def get_issue(request, pk):
                 url = url[0:-2] + ("=s0" if containsS0 else "=s1600")
                 return "https://2.bp.blogspot.com/" + url + sep + rest
 
-            #pages = [beau(match) for match in matches]
+            pages = [beau(match) for match in matches]
                     
             return render(request, 'comics/get_issue.html', {'issue': issue,
                                                             'pages': pages})

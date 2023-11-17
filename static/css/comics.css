@@ -43,6 +43,7 @@
 
 .carousel > .carousel-inner > .carousel-item > img {
     height: 100vh;
+    margin:auto;
 }
 
 #comic-reader {
