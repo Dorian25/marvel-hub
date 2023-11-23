@@ -1,7 +1,8 @@
 body {
     font-family: "Marvel";
     width: 100vw;
-    height: 100vh
+    height: 100vh;
+    overflow-x: hidden;
 }
 
 .nav-item {
@@ -38,6 +39,16 @@ footer {
     line-height: 60px;
     text-align: center;
     color: #666;
+    background-color: rgb(21, 21, 21);
+    text-decoration: none;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: white;
 }
 
 .headlines-container {
@@ -69,7 +80,7 @@ footer {
     text-align: center;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
     font-weight: bold;
 }
 

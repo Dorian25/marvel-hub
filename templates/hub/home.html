@@ -1,8 +1,105 @@
 {% extends "../base.html" %}
 
 {% block content %}
-<div class="container">
-    
+{% load hitcount_tags %}
+<section class="mb-3 mt-3">
+    <div class="container">
+        <h2><i class="fa-solid fa-fire"></i> Hot Series</h2>
+        {% if hot_series|length > 1 %}
+        <div class="row flex-row flex-nowrap trends">
+            {% for serie in hot_series %}
+            <div class="col-2 series-card">
+                <div class="series-card-image mb-3">
+                    <a href="./comics/series/{{ serie.series_id }}">
+                        <img class="img-fluid" src="{{ serie.url_logo }}" alt="" loading="lazy">
+                    </a>
+                </div>
+                <div class="series-card-text">
+                    <h5>{{ serie.cleanname }}</h5>
+                    <p class="text-secondary">{{ serie.hit_count.hits }} views</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <h3 class="text-center text-secondary p-5">NO DATA AVAILABLE</h3>
+        {% endif %}
+    </div>
+</section>
 
-</div>
+<section class="mb-3">
+    <div class="container">
+        <h2><i class="fa-solid fa-fire"></i> Hot Issues</h2>
+        {% if hot_issues|length > 1 %}
+        <div class="row flex-row flex-nowrap trends">
+            {% for issue in hot_issues %}
+                <div class="col-2 series-card">
+                    <div class="series-card-image mb-3">
+                        <a href="./movies/watch/{{ movie.movie_id }}">
+                            <img class="img-fluid" src="{{ movie.url_cover }}" alt="" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="series-card-text">
+                        <h5>{{ movie.name }}</h5>
+                        <p class="text-secondary">{{ movie.hit_count.hits }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <h3 class="text-center text-secondary p-5">NO DATA AVAILABLE</h3>
+        {% endif %}
+    </div>
+    
+</section>
+
+<section class="mb-3">
+    <div class="container">
+        <h2><i class="fa-solid fa-fire"></i> Hot Movies</h2>
+        {% if hot_movies|length > 1 %}
+        <div class="row flex-row flex-nowrap trends">
+            {% for movie in hot_movies %}
+                <div class="col-2 series-card">
+                    <div class="series-card-image mb-3">
+                        <a href="./movies/watch/{{ movie.movie_id }}">
+                            <img class="img-fluid" src="{{ movie.url_cover }}" alt="" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="series-card-text">
+                        <h5>{{ movie.name }}</h5>
+                        <p class="text-secondary">{{ movie.hit_count.hits }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <h3 class="text-center text-secondary p-5">NO DATA AVAILABLE</h3>
+        {% endif %}
+    </div>
+</section>
+
+<section class="mb-3">
+    <div class="container">
+        <h2><i class="fa-solid fa-fire"></i> Hot Characters</h2>
+        {% if hot_characters|length > 1 %}
+        <div class="row flex-row flex-nowrap trends">
+            {% for character in hot_characters %}
+                <div class="col-2 series-card">
+                    <div class="series-card-image mb-3">
+                        <a href="./movies/watch/{{ movie.movie_id }}">
+                            <img class="img-fluid" src="{{ movie.url_cover }}" alt="" loading="lazy">
+                        </a>
+                    </div>
+                    <div class="series-card-text">
+                        <h5>{{ movie.name }}</h5>
+                        <p class="text-secondary">{{ movie.hit_count.hits }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <h3 class="text-center text-secondary p-5">NO DATA AVAIBLE</h3>
+        {% endif %}
+    </div>
+</section>
 {% endblock %}

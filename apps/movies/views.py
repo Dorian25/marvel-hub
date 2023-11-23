@@ -13,7 +13,7 @@ def home(request):
     list_movies = paginator.get_page(page)
     list_movies.adjusted_elided_pages = paginator.get_elided_page_range(page)
 
-    return render(request, 'movies/home.html', {"all_movies": all_movies,
+    return render(request, 'movies/home.html', {"number_movies": len(all_movies),
                                                 "list_movies":list_movies})
 
 def get_movie(request, pk):          

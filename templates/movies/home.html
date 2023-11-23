@@ -9,11 +9,11 @@
     <a class="btn btn-light" href="#">Suprise me</a>
   </div>
 </section>
-<section>
-  <div class="container">
-    <rssapp-carousel id="yDwSKoCWF91DoGRO"></rssapp-carousel>
-  </div>
-</section>
+<section class="bg-dark p-5">
+  <div class="container text-light">
+    <h2 class="mb-3"><i class="fa-solid fa-fire"></i> Trailer Marvel Comics</h2>
+    <iframe width="100%" height="500" src="https://www.youtube-nocookie.com/embed/videoseries?si=SV3LHOh8BFo6kUnB&amp;list=PLK5HARgNfgj-AFqP-9VVYdm1ksy69HA__" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </section>
 
 <section class="mb-3">
   <div class="container">
@@ -29,7 +29,7 @@
 <section>
   <div class="container">
       <div class="row mb-5">
-          <div class="col-10">{{ all_movies|length }} RESULTS</div>
+          <div class="col-10">{{ number_movies }} RESULTS</div>
           <div class="col-2">SORT BY</div>
       </div>
       
@@ -89,11 +89,10 @@
 {% endblock content %}
 
 {% block script %}
-<a href="http://"></a>
 <script>
   $(function() {
     $("#searchbar").autocomplete({
-      source: "{% url 'ajax-search' %}"
+      source: "{% url 'ajax-search-movies' %}"
     }).autocomplete("instance")._renderItem = function(ul, item) {
       console.log('test');
       var item = $(`<a class="search-results" href="watch/${item.movie_id}">${item.name}</a>`)

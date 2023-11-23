@@ -19,6 +19,6 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name="movies-home"),
-    path('ajax_search', views.ajax_search, name="ajax-search"),
+    path('ajax_search', views.ajax_search, name="ajax-search-movies"),
     path('watch/<int:pk>', views.get_movie, name="get-movie"),
 ]

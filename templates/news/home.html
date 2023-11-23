@@ -1,15 +1,17 @@
 {% extends "../base.html" %}
 
 {% block content %}
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-  <div class="col-md-5 p-lg-5 mx-auto my-5">
+<section class="headlines-container">
+  <img src="https://i.imgur.com/Spw95ng.jpg" alt="" class="img-fluid">
+  <div class="headlines-text" class="col-md-5 p-lg-5 mx-auto my-5">
     <h1 class="display-4 font-weight-normal">Marvel News</h1>
-    <p class="lead font-weight-normal"></p>
-    <a class="btn btn-light" href="#">Coming soon</a>
+    <p class="lead font-weight-normal">Dive into the captivating world of comics, where vivid illustrations and gripping narratives bring to life!</p>
   </div>
-</div>
+</section>
 
-<div class="container">
-  <rssapp-list id="UoUU7kKuqZgjRWFg"></rssapp-list>
-</div>
+<section>
+  <div class="container">
+    <rssapp-list id="UoUU7kKuqZgjRWFg"></rssapp-list>
+  </div>
+</section>
 {% endblock content %}

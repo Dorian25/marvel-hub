@@ -4,23 +4,33 @@ from .models import Series
 from .models import Issue
 from django.core.paginator import Paginator
 from bs4 import BeautifulSoup
-import requests
 import re
 import binascii
 import cloudscraper
+from django.http import JsonResponse
+from hitcount.models import HitCount
+from hitcount.views import HitCountMixin
 
 def home(request):
     return render(request, "comics/home.html", {})
 
 def home_series(request):
+    # FEATURED SERIES
+    featured_series_filter = ['Eternals', 'Black Widow', 'Avengers', 
+                              'Infinity Gauntlet', 'The Amazing Spider-Man',
+                              'Star Wars', 'Ms. Marvel', 'Moon Knight',
+                              'Vision']
+    featured_series = Series.objects.filter(cleanname__in=featured_series_filter)
+    # ALL SERIES
     page = request.GET.get('page', 1)
-    all_series = Series.objects.all().order_by('series_id')
+    all_series = Series.objects.all().order_by('cleanname')
     paginator = Paginator(all_series, 20) # Show 20 series per page
     list_series = paginator.get_page(page)
     list_series.adjusted_elided_pages = paginator.get_elided_page_range(page)
 
-    return render(request, 'comics/series.html', {"all_series": all_series,
-                                                "list_series":list_series})
+    return render(request, 'comics/series.html', {"number_series": len(all_series),
+                                                  "list_series": list_series,
+                                                  "featured_series": featured_series})
 
 def get_series(request, pk):
     try:
@@ -30,7 +40,7 @@ def get_series(request, pk):
     
     issues = Issue.objects.filter(series_id=pk)
 
-    return render(request, 'comics/get_series.html', {"series": series, "issues": issues})
+    return render(request, 'comics/get_series.html', {"series": series, "issues": issues, "hitcount_series":series.hit_count.hits})
 
 def get_issue(request, pk):
     try:
@@ -80,3 +90,10 @@ def get_issue(request, pk):
             return render(request, './404error.html')
     else :
         return render(request, './404error.html')
+    
+def ajax_search(request):
+    if 'term' in request.GET:
+        series = Series.objects.filter(cleanname__istartswith = request.GET.get('term'))[:10]
+        results = [{"name":"{} {}".format(s.cleanname, s.publicationdate),
+                    "series_id":s.series_id} for s in series]
+        return JsonResponse(results, safe=False)

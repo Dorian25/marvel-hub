@@ -13,7 +13,8 @@
     <div class="container">
       <h4 class="p-2">MARVEL SERIES LIST</h4>
       <form action="">
-          <input class="form-control form-control-lg" type="text" placeholder="SEARCH">
+        {% csrf_token %}
+        <input id="searchbar" class="form-control form-control-lg" type="text" placeholder="SEARCH">
       </form>
     </div>
 </section>
@@ -22,7 +23,7 @@
 <section>
     <div class="container">
         <div class="row mb-5">
-            <div class="col-10">{{ all_series|length }} RESULTS</div>
+            <div class="col-10">{{ number_series }} RESULTS</div>
             <div class="col-2">SORT BY</div>
         </div>
         
@@ -36,7 +37,7 @@
                 </div>
                 <div class="series-card-text">
                     <h5>{{ serie.cleanname }}</h5>
-                    <p>{{ serie.publicationdate }}</p>
+                    <p class="text-secondary">{{ serie.publicationdate }}</p>
                 </div>
             </div>
           {% endfor %}    
@@ -80,3 +81,17 @@
     </div>
 </section>
 {% endblock content %}
+
+{% block script %}
+<script type="text/javascript">
+  $(function() {
+    $("#searchbar").autocomplete({
+      source: "{% url 'ajax-search-series' %}",
+      minLength: 2
+    }).autocomplete("instance")._renderItem = function(ul, item) {
+      var item = $(`<a class="search-results" href="./${item.series_id}">${item.name}</a>`)
+      return $("<li>").append(item).appendTo(ul);
+    };
+  });
+</script>
+{% endblock script %}

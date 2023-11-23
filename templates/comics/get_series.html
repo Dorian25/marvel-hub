@@ -1,31 +1,33 @@
 {% extends "../base.html" %}
 
 {% block content %}
-<div class="container series-header">
-    <div class="row mb-5 p-5">
-        <div class="col-4">
-            <img class="img-thumbnail img-fluid" src="{{ series.url_logo}}" alt="" height="150" width="150">
-        </div>
-        <div class="col-8">
-            <h2>{{ series.cleanname }}</h2>
-            <div class="row p-2">
-                <div class="col-6">
-                    <h6>Status: {{ series.status }}</h5>
-                    <h6>Type: {{ series.type }}</h5>
-                </div>
-                <div class="col-6">
-                    <h6>Publisher: {{ series.publisher }}</h5>
-                    <h6>Genre: {{ series.genre }}</h5>
-                </div>
+<section>
+    <div class="container series-header">
+        <div class="row mb-5 p-5">
+            <div class="col-4">
+                <img class="img-thumbnail img-fluid" src="{{ series.url_logo}}" alt="" height="150" width="150">
             </div>
-            
+            <div class="col-8">
+                <h2>{{ series.cleanname }}</h2>
+                <div class="row p-2">
+                    <div class="col-6">
+                        <h6>Status: {{ series.status }}</h5>
+                        <h6>Type: {{ series.type }}</h5>
+                    </div>
+                    <div class="col-6">
+                        <h6>Publisher: {{ series.publisher }}</h5>
+                        <h6>Genre: {{ series.genre }}</h5>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="container">
-    <!-- SEARCH RESULTS -->
-    <section>
+<section>
+    <div class="container">
+        <!-- SEARCH RESULTS -->
         <div class="row mb-5">
             <div class="col-10">SHOW {{ issues|length }} RESULTS</div>
             <div class="col-2">SORT BY</div>
@@ -45,8 +47,23 @@
             </div>
             {% endfor %}
         </div>
-    </section>
-    
-</div>
+    </div>
+</section>
+{% endblock content %}
 
-{% endblock %}
+{% block script %}
+{% load hitcount_tags %}
+{% get_hit_count_js_variables for series as hitcount %}
+<script type="text/javascript">
+  $(function() {
+    // use the template tags in our JavaScript call
+    $.postCSRF("{{ hitcount.ajax_url }}", { hitcountPK : "{{ hitcount.pk }}" })
+      .done(function(data){
+        console.log(data.hit_counted, data.hit_message, "{{ hitcount_series }}")
+    }).fail(function(data){
+        console.log('POST failed');
+        console.log(data);
+    });
+  });
+</script>
+{% endblock script %}

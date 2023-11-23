@@ -4,12 +4,12 @@
 <div class="section">
 </div>
 
-<div class="section bg-light">
-    <div id="comic-reader" class="container-fluid bg-dark">
+<div class="section">
+    <div id="comic-reader" class="container-fluid">
         <div id="top-menu-reader" class="row p-4">
             <span>
                 <i class="fa-solid fa-arrow-left"></i>
-                <a class="col-4" href="#"> BACK TO SERIES</a>
+                <a class="col-4" href="{% url 'comic-series' issue.serie_id %}"> BACK TO SERIES</a>
             </span>
             <div class="col-8"></div>
         </div>
@@ -49,3 +49,20 @@
 </div>
 
 {% endblock content %}
+
+{% block script %}
+{% load hitcount_tags %}
+{% get_hit_count_js_variables for issue as hitcount %}
+<script type="text/javascript">
+  $(function() {
+    // use the template tags in our JavaScript call
+    $.postCSRF("{{ hitcount.ajax_url }}", { hitcountPK : "{{ hitcount.pk }}" })
+      .done(function(data){
+        console.log(data.hit_counted, data.hit_message)
+    }).fail(function(data){
+        console.log('POST failed');
+        console.log(data);
+    });
+  });
+</script>
+{% endblock script %}
