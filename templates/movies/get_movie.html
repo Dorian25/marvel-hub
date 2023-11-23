@@ -23,3 +23,20 @@
     </div>
 </section>
 {% endblock content %}
+
+{% block script %}
+{% load hitcount_tags %}
+{% get_hit_count_js_variables for movie as hitcount %}
+<script type="text/javascript">
+  $(function() {
+    // use the template tags in our JavaScript call
+    $.postCSRF("{{ hitcount.ajax_url }}", { hitcountPK : "{{ hitcount.pk }}" })
+      .done(function(data){
+        console.log(data.hit_counted, data.hit_message)
+    }).fail(function(data){
+        console.log('POST failed');
+        console.log(data);
+    });
+  });
+</script>
+{% endblock script %}
