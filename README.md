@@ -10,7 +10,7 @@ Explore the latest news, delve into timeless comics, immerse yourself in blockbu
 
 Whether you're a longtime fan or just beginning to discover the Marvel Universe, you've come to the right place. Get ready to be amazed and transported to a world of superhuman powers, epic battles, and unforgettable heroes. 
 
-Welcom to your new home, *Marvel Hub*.
+Welcome to your new home, *Marvel Hub*.
 
 
 
