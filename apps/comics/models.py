@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.contenttypes.fields import GenericRelation
 from hitcount.models import HitCountMixin, HitCount
+from datetime import datetime
 
 class Series(models.Model, HitCountMixin):
     """
@@ -40,6 +41,7 @@ class Issue(models.Model, HitCountMixin):
     issue_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
+    release_date = models.DateField(default=datetime(1900,1,1))
     url_cover = models.TextField()
     url_read = models.TextField()
     
