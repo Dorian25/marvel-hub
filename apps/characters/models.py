@@ -16,7 +16,7 @@ class Reality(models.Model):
     def __str__(self):
         return self.name
 
-class Character(models.Model):
+class Character(models.Model, HitCountMixin):
     character_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
 
@@ -35,14 +35,18 @@ class Version(models.Model):
     character = models.ForeignKey(Character, 
                                 on_delete=models.CASCADE)
 
-    current_alias = models.CharField(max_length=255)
-    image = models.TextField()
-    
+    url_fandom = models.TextField()
+    url_image = models.TextField()
 
+    name_primary = models.CharField(max_length=255)
+    name_secondary = models.CharField(max_length=255)
+    current_alias = models.CharField(max_length=255)
+    
     # physical characteristics
     gender = models.CharField(max_length=25)
     eyes = models.CharField(max_length=25)
     hair = models.CharField(max_length=25)
+    skin = models.CharField(max_length=25)
 
 
     # origin & living status
@@ -55,9 +59,9 @@ class Version(models.Model):
     # personal information
 
     # power
-    intelligence_power = models.IntegerField()
-    strength_power = models.IntegerField()
-    speed_power = models.IntegerField()
-    durability_power = models.IntegerField()
-    energy_projection_power = models.IntegerField()
-    fighting_skills_power = models.IntegerField()
+    intelligence_power = models.IntegerField(default=0)
+    strength_power = models.IntegerField(default=0)
+    speed_power = models.IntegerField(default=0)
+    durability_power = models.IntegerField(default=0)
+    energy_projection_power = models.IntegerField(default=0)
+    fighting_skills_power = models.IntegerField(default=0)

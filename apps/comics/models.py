@@ -20,7 +20,7 @@ class Series(models.Model, HitCountMixin):
     logo TEXT,
     url_fandom TEXT);
     """
-    series_id = models.IntegerField(primary_key=True)
+    series_id = models.AutoField(primary_key=True)
     rawname = models.CharField(max_length=255)
     cleanname = models.CharField(max_length=255)
     num = models.CharField(max_length=10)
@@ -38,7 +38,7 @@ class Series(models.Model, HitCountMixin):
     )
 
 class Issue(models.Model, HitCountMixin):
-    issue_id = models.IntegerField(primary_key=True)
+    issue_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
     release_date = models.DateField(default=datetime(1900,1,1))
@@ -53,7 +53,3 @@ class Issue(models.Model, HitCountMixin):
         HitCount, object_id_field='object_pk',
         related_query_name='hit_count_generic_relation'
     )
-
-
-
-

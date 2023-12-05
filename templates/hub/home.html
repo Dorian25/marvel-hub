@@ -1,24 +1,42 @@
 {% extends "../base.html" %}
 
 {% block content %}
+<!--
+<section class="mb-3 mt-3">
+    <div class="container">
+        <h2 class="mb-3"><i class="fa-solid fa-chart-line"></i> Dashboard : Comics</h2>
+        <iframe height="500" width="100%" src="https://snapshots.raintank.io/dashboard/snapshot/sTpQnA2wOIZmXWk9VRXfeZe1398FLrLi" frameborder="0"></iframe>
+    </div>
+</section>
+
 {% load hitcount_tags %}
 <section class="mb-3 mt-3">
     <div class="container">
-        <h2><i class="fa-solid fa-fire"></i> Hot Series</h2>
+        <h2 class="mb-3"><i class="fa-solid fa-fire"></i> Hot Series</h2>
         {% if hot_series|length > 1 %}
-        <div class="row flex-row flex-nowrap trends">
+        <div class="row flex-row flex-nowrap trends p-4">
             {% for serie in hot_series %}
+            {% if serie.hit_count.hits > 0 %}
             <div class="col-2 series-card">
                 <div class="series-card-image mb-3">
                     <a href="./comics/series/{{ serie.series_id }}">
                         <img class="img-fluid" src="{{ serie.url_logo }}" alt="" loading="lazy">
                     </a>
                 </div>
-                <div class="series-card-text">
-                    <h5>{{ serie.cleanname }}</h5>
-                    <p class="text-secondary">{{ serie.hit_count.hits }} views</p>
+                <div class="series-card-text text-truncate">
+                    <h5 class="text-truncate">{{ serie.cleanname }}</h5>
+                    {% if forloop.counter == 1 %}
+                    <p class="text-secondary trends-gold">{{ forloop.counter }}</p>
+                    {% elif forloop.counter == 2 %}
+                    <p class="text-secondary trends-silver">{{ forloop.counter }}</p>
+                    {% elif forloop.counter == 3 %}
+                    <p class="text-secondary trends-bronze">{{ forloop.counter }}</p>
+                    {% else %}
+                    <p class="text-secondary trends-other">{{ forloop.counter }}</p>            
+                    {% endif %}
                 </div>
             </div>
+            {% endif %}
             {% endfor %}
         </div>
         {% else %}
@@ -29,21 +47,31 @@
 
 <section class="mb-3">
     <div class="container">
-        <h2><i class="fa-solid fa-fire"></i> Hot Issues</h2>
+        <h2 class="mb-3"><i class="fa-solid fa-fire"></i> Hot Issues</h2>
         {% if hot_issues|length > 1 %}
-        <div class="row flex-row flex-nowrap trends">
+        <div class="row flex-row flex-nowrap trends p-4">
             {% for issue in hot_issues %}
+            {% if issue.hit_count.hits > 0 %}
                 <div class="col-2 series-card">
                     <div class="series-card-image mb-3">
-                        <a href="./movies/watch/{{ movie.movie_id }}">
-                            <img class="img-fluid" src="{{ movie.url_cover }}" alt="" loading="lazy">
+                        <a href="./comics/issue/{{ issue.issue_id }}">
+                            <img class="img-fluid" src="{{ issue.url_cover }}" alt="" loading="lazy">
                         </a>
                     </div>
                     <div class="series-card-text">
-                        <h5>{{ movie.name }}</h5>
-                        <p class="text-secondary">{{ movie.hit_count.hits }}</p>
+                        <h5 class="text-truncate">{{ issue.name }}</h5>
+                        {% if forloop.counter == 1 %}
+                        <p class="text-secondary trends-gold">{{ forloop.counter }}</p>
+                        {% elif forloop.counter == 2 %}
+                        <p class="text-secondary trends-silver">{{ forloop.counter }}</p>
+                        {% elif forloop.counter == 3 %}
+                        <p class="text-secondary trends-bronze">{{ forloop.counter }}</p>
+                        {% else %}
+                        <p class="text-secondary trends-other">{{ forloop.counter }}</p>            
+                        {% endif %}                    
                     </div>
                 </div>
+            {% endif %}
             {% endfor %}
         </div>
         {% else %}
@@ -55,21 +83,31 @@
 
 <section class="mb-3">
     <div class="container">
-        <h2><i class="fa-solid fa-fire"></i> Hot Movies</h2>
+        <h2 class="mb-3"><i class="fa-solid fa-fire"></i> Hot Movies</h2>
         {% if hot_movies|length > 1 %}
-        <div class="row flex-row flex-nowrap trends">
+        <div class="row flex-row flex-nowrap trends p-4">
             {% for movie in hot_movies %}
-                <div class="col-2 series-card">
+            {% if movie.hit_count.hits > 0 %}
+                <div class="col-3 series-card">
                     <div class="series-card-image mb-3">
                         <a href="./movies/watch/{{ movie.movie_id }}">
                             <img class="img-fluid" src="{{ movie.url_cover }}" alt="" loading="lazy">
                         </a>
                     </div>
                     <div class="series-card-text">
-                        <h5>{{ movie.name }}</h5>
-                        <p class="text-secondary">{{ movie.hit_count.hits }}</p>
+                        <h5 class="text-truncate">{{ movie.name }}</h5>
+                        {% if forloop.counter == 1 %}
+                        <p class="text-center  trends-gold">{{ forloop.counter }}</p>
+                        {% elif forloop.counter == 2 %}
+                        <p class="text-center  trends-silver">{{ forloop.counter }}</p>
+                        {% elif forloop.counter == 3 %}
+                        <p class="text-center  trends-bronze">{{ forloop.counter }}</p>
+                        {% else %}
+                        <p class="text-center trends-other">{{ forloop.counter }}</p>            
+                        {% endif %}                    
                     </div>
                 </div>
+            {% endif %}    
             {% endfor %}
         </div>
         {% else %}
@@ -80,21 +118,31 @@
 
 <section class="mb-3">
     <div class="container">
-        <h2><i class="fa-solid fa-fire"></i> Hot Characters</h2>
+        <h2 class="mb-3"><i class="fa-solid fa-fire"></i> Hot Characters</h2>
         {% if hot_characters|length > 1 %}
         <div class="row flex-row flex-nowrap trends">
             {% for character in hot_characters %}
-                <div class="col-2 series-card">
+            {% if movie.hit_count.hits > 0 %}
+                <div class="col-3 series-card">
                     <div class="series-card-image mb-3">
                         <a href="./movies/watch/{{ movie.movie_id }}">
                             <img class="img-fluid" src="{{ movie.url_cover }}" alt="" loading="lazy">
                         </a>
                     </div>
                     <div class="series-card-text">
-                        <h5>{{ movie.name }}</h5>
-                        <p class="text-secondary">{{ movie.hit_count.hits }}</p>
+                        <h5 class="text-truncate">{{ movie.name }}</h5>
+                        {% if forloop.counter == 1 %}
+                        <p class="text-center trends-gold">{{ forloop.counter }}</p>
+                        {% elif forloop.counter == 2 %}
+                        <p class="text-center trends-silver">{{ forloop.counter }}</p>
+                        {% elif forloop.counter == 3 %}
+                        <p class="text-center trends-bronze">{{ forloop.counter }}</p>
+                        {% else %}
+                        <p class="text-center trends-other">{{ forloop.counter }}</p>            
+                        {% endif %}                    
                     </div>
                 </div>
+            {% endif %}
             {% endfor %}
         </div>
         {% else %}
@@ -102,4 +150,5 @@
         {% endif %}
     </div>
 </section>
+-->
 {% endblock %}

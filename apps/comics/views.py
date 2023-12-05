@@ -8,19 +8,18 @@ import re
 import binascii
 import cloudscraper
 from django.http import JsonResponse
-from hitcount.models import HitCount
-from hitcount.views import HitCountMixin
 
 def home(request):
     return render(request, "comics/home.html", {})
 
 def home_series(request):
     # FEATURED SERIES
-    featured_series_filter = ['Eternals', 'Black Widow', 'Avengers', 
+    # TODO
+    featured_series_filter = ['Eternals Vol 3 ()', 'Black Widow (2014-2015)', 'Avengers', 
                               'Infinity Gauntlet', 'The Amazing Spider-Man',
                               'Star Wars', 'Ms. Marvel', 'Moon Knight',
                               'Vision']
-    featured_series = Series.objects.filter(cleanname__in=featured_series_filter)
+    featured_series = Series.objects.filter(rawname__in=featured_series_filter)
     # ALL SERIES
     page = request.GET.get('page', 1)
     all_series = Series.objects.all().order_by('cleanname')
@@ -40,7 +39,7 @@ def get_series(request, pk):
     
     issues = Issue.objects.filter(series_id=pk)
 
-    return render(request, 'comics/get_series.html', {"series": series, "issues": issues, "hitcount_series":series.hit_count.hits})
+    return render(request, 'comics/get_series.html', {"series": series, "issues": issues})
 
 def get_issue(request, pk):
     try:

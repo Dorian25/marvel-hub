@@ -1,4 +1,288 @@
 .trends {
     overflow-x: auto;
     overflow-y: hidden;
+    /* Firefox */
+    scrollbar-width: auto;
+    scrollbar-color: #cdd4c4 #ffffff;
 }
+
+/* ===== Scrollbar CSS ===== */
+
+/* Chrome, Edge, and Safari */
+.trends::-webkit-scrollbar {
+    width: 15px;
+}
+
+.trends::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+.trends::-webkit-scrollbar-thumb {
+    background-color: #cdd4c4;
+    border-radius: 15px;
+    border: 3px solid #ffffff;
+}
+
+.trends-gold {
+    font-size: 1em;
+    color: rgba(0, 0, 0, 0.72);
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #ffffff;
+    box-shadow:
+        2px 2px 0.5em rgba(122, 98, 0, 0.55),
+        inset 1px 1px 0 rgba(255, 255, 255, 0.9),
+        inset -1px -1px 0 rgba(0, 0, 0, 0.34)
+    ;
+    border: 1px solid #deca73;
+    background:
+        -moz-linear-gradient(
+        -72deg,
+        #ffde45,
+        #ffffff 16%,
+        #ffde45 21%,
+        #ffffff 24%,
+        #452100 27%,
+        #ffde45 36%,
+        #ffffff 45%,
+        #ffffff 60%,
+        #ffde45 72%,
+        #ffffff 80%,
+        #ffde45 84%,
+        #452100
+    );
+    background:
+    -webkit-linear-gradient(
+        -72deg,
+        #ffde45,
+        #ffffff 16%,
+        #ffde45 21%,
+        #ffffff 24%,
+        #452100 27%,
+        #ffde45 36%,
+        #ffffff 45%,
+        #ffffff 60%,
+        #ffde45 72%,
+        #ffffff 80%,
+        #ffde45 84%,
+        #452100
+    );
+    background:
+    -o-linear-gradient(
+        -72deg,
+        #ffde45,
+        #ffffff 16%,
+        #ffde45 21%,
+        #ffffff 24%,
+        #452100 27%,
+        #ffde45 36%,
+        #ffffff 45%,
+        #ffffff 60%,
+        #ffde45 72%,
+        #ffffff 80%,
+        #ffde45 84%,
+        #452100
+    );
+    background:
+    linear-gradient(
+        -72deg,
+        #ffde45,
+        #ffffff 16%,
+        #ffde45 21%,
+        #ffffff 24%,
+        #452100 27%,
+        #ffde45 36%,
+        #ffffff 45%,
+        #ffffff 60%,
+        #ffde45 72%,
+        #ffffff 80%,
+        #ffde45 84%,
+        #452100
+    );
+}
+
+/* https://codepen.io/sato4yoshida/pen/BaKBeO */
+.trends-silver {
+    font-size: 1em;
+    color: rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #ffffff;
+    box-shadow:
+        2px 2px 0.5em rgba(122, 122, 122, 0.55),
+        inset 1px 1px 0 rgba(255, 255, 255, 0.9),
+        inset -1px -1px 0 rgba(0, 0, 0, 0.34)
+    ;
+    border: 1px solid #dedede;
+    background:
+        -moz-linear-gradient(
+        -72deg,
+        #dedede,
+        #ffffff 16%,
+        #dedede 21%,
+        #ffffff 24%,
+        #454545 27%,
+        #dedede 36%,
+        #ffffff 45%,
+        #ffffff 60%,
+        #dedede 72%,
+        #ffffff 80%,
+        #dedede 84%,
+        #a1a1a1
+    );
+    background:
+    -webkit-linear-gradient(
+        -72deg,
+        #dedede,
+        #ffffff 16%,
+        #dedede 21%,
+        #ffffff 24%,
+        #454545 27%,
+        #dedede 36%,
+        #ffffff 45%,
+        #ffffff 60%,
+        #dedede 72%,
+        #ffffff 80%,
+        #dedede 84%,
+        #a1a1a1
+    );
+    background:
+    -o-linear-gradient(
+        -72deg,
+        #dedede,
+        #ffffff 16%,
+        #dedede 21%,
+        #ffffff 24%,
+        #454545 27%,
+        #dedede 36%,
+        #ffffff 45%,
+        #ffffff 60%,
+        #dedede 72%,
+        #ffffff 80%,
+        #dedede 84%,
+        #a1a1a1
+    );
+    background:
+    linear-gradient(
+        -72deg,
+        #dedede,
+        #ffffff 16%,
+        #dedede 21%,
+        #ffffff 24%,
+        #454545 27%,
+        #dedede 36%,
+        #ffffff 45%,
+        #ffffff 60%,
+        #dedede 72%,
+        #ffffff 80%,
+        #dedede 84%,
+        #a1a1a1
+    );
+}
+
+.trends-bronze {
+    color: rgba(45, 00, 0, 0.55);
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #dea173;
+    box-shadow:
+        2px 2px 0.5em rgba(122, 55, 34, 0.55),
+        inset 1px 1px 0 rgba(255, 255, 255, 0.9),
+        inset -1px -1px 0 rgba(0, 0, 0, 0.5)
+    ;
+    border: 1px solid #dea173;
+    background:
+    -moz-linear-gradient(
+        -72deg,
+        #ca7345,
+        #ffdeca 16%,
+        #ca7345 21%,
+        #ffdeca 24%,
+        #a14521 27%,
+        #ca7345 36%,
+        #ffdeca 45%,
+        #ffdeca 60%,
+        #ca7345 72%,
+        #ffdeca 80%,
+        #ca7345 84%,
+        #732100
+    );
+    background:
+    -webkit-linear-gradient(
+        -72deg,
+        #ca7345,
+        #ffdeca 16%,
+        #ca7345 21%,
+        #ffdeca 24%,
+        #a14521 27%,
+        #ca7345 36%,
+        #ffdeca 45%,
+        #ffdeca 60%,
+        #ca7345 72%,
+        #ffdeca 80%,
+        #ca7345 84%,
+        #732100
+    );
+    background:
+    -o-linear-gradient(
+        -72deg,
+        #ca7345,
+        #ffdeca 16%,
+        #ca7345 21%,
+        #ffdeca 24%,
+        #a14521 27%,
+        #ca7345 36%,
+        #ffdeca 45%,
+        #ffdeca 60%,
+        #ca7345 72%,
+        #ffdeca 80%,
+        #ca7345 84%,
+        #732100
+    );
+    background:
+    linear-gradient(
+        -72deg,
+        #ca7345,
+        #ffdeca 16%,
+        #ca7345 21%,
+        #ffdeca 24%,
+        #a14521 27%,
+        #ca7345 36%,
+        #ffdeca 45%,
+        #ffdeca 60%,
+        #ca7345 72%,
+        #ffdeca 80%,
+        #ca7345 84%,
+        #732100
+    );
+}
+
+.trends-other {
+    color: rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.45);
+    border: 1px solid #565656;
+    box-shadow:
+        2px 2px 0.5em rgba(0, 0, 0, 0.55),
+        inset 1px 1px 0 rgba(255, 255, 255, 0.55),
+        inset -1px -1px 0 rgba(0, 0, 0, 0.5)
+    ;
+    background:
+        -moz-repeating-linear-gradient(
+        top, #565656, #131313 2px, #565656 1px
+    );
+    background:
+        -o-repeating-linear-gradient(
+        top, #565656, #131313 2px, #565656 1px
+    );
+    background:
+        -webkit-repeating-linear-gradient(
+        top, #565656, #131313 2px, #565656 1px
+    );
+    background:
+        repeating-linear-gradient(
+        top, #565656, #131313 2px, #565656 1px
+    );
+}
+  

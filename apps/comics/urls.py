@@ -23,5 +23,4 @@ urlpatterns = [
     path('series/<int:pk>', views.get_series, name="comics-series"),
     path('ajax_search', views.ajax_search, name="ajax-search-series"),
     path('issue/<int:pk>/read/',views.get_issue, name="comics-issue"),
-    path('hitcount/', include('hitcount.urls'), name="hitcount")
 ]

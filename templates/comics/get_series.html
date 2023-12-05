@@ -6,20 +6,20 @@
         <div class="row mb-5 p-5">
             <div class="col-4">
                 <img class="img-thumbnail img-fluid" src="{{ series.url_logo}}" alt="" height="150" width="150">
+                <h5 class="mt-3"><i class="fa-solid fa-eye"></i> {{ series.hit_count.hits }}</h5>
             </div>
             <div class="col-8">
                 <h2>{{ series.cleanname }}</h2>
                 <div class="row p-2">
                     <div class="col-6">
-                        <h6>Status: {{ series.status }}</h5>
-                        <h6>Type: {{ series.type }}</h5>
+                        <h6>Status: {{ series.status }}</h6>
+                        <h6>Type: {{ series.type }}</h6>
                     </div>
                     <div class="col-6">
-                        <h6>Publisher: {{ series.publisher }}</h5>
-                        <h6>Genre: {{ series.genre }}</h5>
+                        <h6>Publisher: {{ series.publisher }}</h6>
+                        <h6>Genre: {{ series.genre }}</h6>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>
@@ -59,7 +59,7 @@
     // use the template tags in our JavaScript call
     $.postCSRF("{{ hitcount.ajax_url }}", { hitcountPK : "{{ hitcount.pk }}" })
       .done(function(data){
-        console.log(data.hit_counted, data.hit_message, "{{ hitcount_series }}")
+        console.log(data.hit_counted, data.hit_message)
     }).fail(function(data){
         console.log('POST failed');
         console.log(data);

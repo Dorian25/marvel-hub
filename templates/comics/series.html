@@ -2,11 +2,28 @@
 
 {% block content %}
 <section>
+  <div class="container">
     <h4 class="p-2">FEATURED SERIES</h4>
+    {% if featured_series|length > 0 %}
     <div class="row row-cols-3 row-cols-sm-3 row-cols-md-3 row-cols-lg-3">
-        {% for serie in list_featured %} 
+        {% for serie in featured_series %} 
+        <div class="col series-card">
+          <div class="series-card-image mb-3">
+              <a href="./{{ serie.series_id }}">
+                  <img class="img-fluid" src="{{ serie.url_logo }}" alt="" loading="lazy">
+              </a>
+          </div>
+          <div class="series-card-text">
+              <h5>{{ serie.cleanname }}</h5>
+              <p class="text-secondary">{{ serie.publicationdate }}</p>
+          </div>
+      </div>
         {% endfor %}
     </div>
+    {% else %}
+    <h3 class="text-center text-secondary p-5">NO DATA AVAILABLE</h3>
+    {% endif %}
+  </div>
 </section>
 
 <section class="mb-3">
