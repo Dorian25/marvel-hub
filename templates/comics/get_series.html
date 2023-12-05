@@ -2,7 +2,7 @@
 
 {% block content %}
 <section>
-    <div class="container series-header">
+    <div class="container series-header border-4 rounded-3 mt-5">
         <div class="row mb-5 p-5">
             <div class="col-4">
                 <img class="img-thumbnail img-fluid" src="{{ series.url_logo}}" alt="" height="150" width="150">
@@ -29,7 +29,7 @@
     <div class="container">
         <!-- SEARCH RESULTS -->
         <div class="row mb-5">
-            <div class="col-10">SHOW {{ issues|length }} RESULTS</div>
+            <div class="col-10">SHOW <b>{{ issues|length }}</b> RESULTS</div>
             <div class="col-2">SORT BY</div>
         </div>
         <div class="row row-cols-3 row-cols-sm-3 row-cols-md-4 row-cols-lg-5">

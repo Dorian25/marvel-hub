@@ -1,13 +1,13 @@
 {% extends "../base.html" %}
 
 {% block content %}
-<section>
+<section class="mt-5">
   <div class="container">
-    <h4 class="p-2">FEATURED SERIES</h4>
+    <h4 class="mb-3 p-2"><i class="fa-solid fa-fire"></i> FEATURED SERIES</h4>
     {% if featured_series|length > 0 %}
     <div class="row row-cols-3 row-cols-sm-3 row-cols-md-3 row-cols-lg-3">
         {% for serie in featured_series %} 
-        <div class="col series-card">
+        <div class="col series-card p-3 m-1">
           <div class="series-card-image mb-3">
               <a href="./{{ serie.series_id }}">
                   <img class="img-fluid" src="{{ serie.url_logo }}" alt="" loading="lazy">
@@ -28,7 +28,7 @@
 
 <section class="mb-3">
     <div class="container">
-      <h4 class="p-2">MARVEL SERIES LIST</h4>
+      <h4 class="p-2"><i class="fa-solid fa-list-ul"></i> MARVEL SERIES LIST</h4>
       <form action="">
         {% csrf_token %}
         <input id="searchbar" class="form-control form-control-lg" type="text" placeholder="SEARCH">
@@ -40,7 +40,7 @@
 <section>
     <div class="container">
         <div class="row mb-5">
-            <div class="col-10">{{ number_series }} RESULTS</div>
+            <div class="col-10"><b>{{ number_series }}</b> RESULTS</div>
             <div class="col-2">SORT BY</div>
         </div>
         

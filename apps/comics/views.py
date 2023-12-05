@@ -15,10 +15,10 @@ def home(request):
 def home_series(request):
     # FEATURED SERIES
     # TODO
-    featured_series_filter = ['Eternals Vol 3 ()', 'Black Widow (2014-2015)', 'Avengers', 
-                              'Infinity Gauntlet', 'The Amazing Spider-Man',
-                              'Star Wars', 'Ms. Marvel', 'Moon Knight',
-                              'Vision']
+    featured_series_filter = ['Eternals Vol 3 (2006–2007)', 'Black Widow Vol 5 (2014–2015)', 'Avengers Vol 8 (2018–2023)', 
+                              'Infinity Gauntlet Vol 1 (1991)', 'Amazing Spider-Man Vol 5 (2018–2022)',
+                              'Star Wars Vol 2 (2015–2020)', 'Ms. Marvel Vol 4 (2016–2019)', 'Moon Knight Vol 7 (2014–2015)',
+                              'Vision Vol 2 (2016)']
     featured_series = Series.objects.filter(rawname__in=featured_series_filter)
     # ALL SERIES
     page = request.GET.get('page', 1)
